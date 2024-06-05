@@ -10,7 +10,7 @@ class Stack {
   }
 
   pop() {
-    if (this._count === 0) {
+    if (this.isEmpty()) {
       return "Underflow";
     }
 
@@ -25,6 +25,26 @@ class Stack {
     this._items.length = this._count;
     return item;
   }
+
+  peek() {
+    if (this.isEmpty()) {
+      return "No items in stack";
+    }
+    return this._items[this._count - 1];
+  }
+
+  isEmpty() {
+    return this._count === 0;
+  }
+
+  length() {
+    return this._count;
+  }
+
+  clear() {
+    this._items = [];
+    this._count = 0;
+  }
 }
 
 const stack = new Stack();
@@ -34,4 +54,13 @@ stack.push("Item 2");
 stack.push("Item 3");
 
 stack.pop();
+
+console.log("Top item: ", stack.peek());
+
+// console.log("Stack Length: ", stack._count); // instead of using private item
+console.log("Stack Length: ", stack.length());
+
+console.log(stack);
+
+stack.clear();
 console.log(stack);
